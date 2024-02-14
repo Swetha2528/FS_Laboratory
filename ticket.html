@@ -4,13 +4,13 @@
     <title>Ticket Details</title>
     <style>
         div#maincontent {
-            height: 200px;
+            height: 150px;
             width: 500px;
             border: 1px solid #CEE2FA;
             text-align: left;
             color: #08438E;
             font-family: calibri;
-            font-size: 20px; /* corrected font size */
+            font-size: 20px;
             padding: 5px;
         }
         div#heading {
@@ -23,7 +23,7 @@
             color: #08438E;
             background-color: #CEE2FA;
             font-family: calibri;
-            font-size: 20px; /* corrected font size */
+            font-size: 20px;
             padding: 5px;
         }
         h4 {
@@ -41,22 +41,40 @@
             <h4>Your Ticket Details:</h4>
             <br>
             <script>
-                // Initialize variables
-                var numberOfTickets = 5; // Assuming the user has booked 5 tickets
-                var pricePerTicket = 9;
-                var totalAmount = numberOfTickets * pricePerTicket;
+                // Define the price per ticket
+                const pricePerTicket = 9;
 
-                // Calculate discounted price
-                var discountPercentage = 0.1; // 10% festive season discount
-                var discountedAmount = totalAmount * discountPercentage;
-                var finalAmount = totalAmount - discountedAmount;
+                // Define the festive season discount rate
+                const festiveDiscountRate = 0.1;
+
+                // Total number of seats booked
+                const numberOfSeatsBooked = 3;
+
+                // Function to calculate total price
+                function calculateTotalPrice(numTickets) {
+                    // Calculate the total price without discount
+                    const totalPrice = pricePerTicket * numTickets;
+
+                    // Calculate the discount amount
+                    const discountAmount = totalPrice * festiveDiscountRate;
+
+                    // Calculate the discounted total price
+                    const discountedTotalPrice = totalPrice - discountAmount;
+
+                    return discountedTotalPrice;
+                }
+
+                // Calculate total cost of tickets
+                const totalCost = pricePerTicket * numberOfSeatsBooked;
+
+                // Calculate discounted total cost
+                const discountedCost = calculateTotalPrice(numberOfSeatsBooked);
 
                 // Display ticket details
-                document.write(`Number of Tickets: ${numberOfTickets}<br>`);
-                document.write(`Price per Ticket: $${pricePerTicket}<br>`);
-                document.write(`Total Price: $${totalAmount}<br>`);
-                document.write(`Festive Season Discount (${discountPercentage * 100}%): -$${discountedAmount.toFixed(2)}<br>`);
-                document.write(`Final Amount: $${finalAmount.toFixed(2)}<br>`);
+                document.write("Total number of seats booked: " + numberOfSeatsBooked + "<br>");
+                document.write("Total cost of " + numberOfSeatsBooked + " tickets: $" + totalCost.toFixed(2) + "<br>");
+                document.write("Festive season discount is: " + (festiveDiscountRate * 100) + "%<br>");
+                document.write("Total cost after discount is: $" + discountedCost.toFixed(2));
             </script>
         </div>
     </center>
